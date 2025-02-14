@@ -1,0 +1,20 @@
+{
+  "100": {
+    "name": "Theme",
+    "needReload": false,
+    "values": {
+      "1": { "name": "Cuttlefish", "cssPref": "theme_cuttlefish" },
+      "2": { "name": "Traditional", "cssPref": "theme_bga" }
+    },
+    "default": 1
+  },
+  "101": {
+    "name": "Unblockable Effects Countdown Timer",
+    "needReload": false,
+    "values": {
+      "1": { "name": "Enabled" },
+      "0": { "name": "Disabled" }
+    },
+    "default": 1
+  }
+}

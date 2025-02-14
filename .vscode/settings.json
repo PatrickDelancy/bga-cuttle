@@ -1,0 +1,13 @@
+{
+	"intelephense.files.exclude": [
+		"**/.git/**",
+		"**/.svn/**",
+		"**/.hg/**",
+		"**/CVS/**",
+		"**/.DS_Store/**",
+		"**/vendor/**/{Tests,tests}/**",
+		"**/.history/**",
+		"**/vendor/**/vendor/**"
+	],
+	"intelephense.environment.phpVersion": "8.2.17"
+}

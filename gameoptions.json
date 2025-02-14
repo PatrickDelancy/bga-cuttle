@@ -1,0 +1,123 @@
+{
+  "100": {
+    "name": "Variant",
+    "default": 0,
+    "values": {
+      "0": {
+        "name": "Balanced (1v1)",
+        "description": "2-Players only! Minor adjustments from the traditional rules to make the game more balanced. The most appropriate rule set for competition.",
+        "tmdisplay": ""
+      },
+      "1": {
+        "name": "Traditional (1v1)",
+        "description": "2-Players only! The earliest documented set of rules for this card game.",
+        "tmdisplay": "Traditional"
+      },
+      "3": {
+        "name": "3-Player Battle (1v1v1)",
+        "description": "Fast-paced variant for 3 players",
+        "tmdisplay": "3-Player Battle"
+      }
+    },
+    "startcondition": {
+      "0": [
+        {
+          "type": "minplayers",
+          "value": 2,
+          "gamestartonly": true,
+          "message": "Change the number of players to 2 to start this game!"
+        },
+        {
+          "type": "maxplayers",
+          "value": 2,
+          "gamestartonly": true,
+          "message": "Change the number of players to 2 to start this game!"
+        }
+      ],
+      "1": [
+        {
+          "type": "minplayers",
+          "value": 2,
+          "gamestartonly": true,
+          "message": "Change the number of players to 2 to start this game!"
+        },
+        {
+          "type": "maxplayers",
+          "value": 2,
+          "gamestartonly": true,
+          "message": "Change the number of players to 2 to start this game!"
+        }
+      ],
+      "3": [
+        {
+          "type": "minplayers",
+          "value": 3,
+          "gamestartonly": true,
+          "message": "Change the number of players to 3 to start this game!"
+        },
+        {
+          "type": "maxplayers",
+          "value": 3,
+          "gamestartonly": true,
+          "message": "Change the number of players to 3 to start this game!"
+        }
+      ]
+    }
+  },
+  "101": {
+    "name": "Game Length",
+    "default": 2,
+    "values": {
+      "0": {
+        "name": "Quick Play (1 Round Only)",
+        "description": "1 Round only, may end in a tie."
+      },
+      "1": {
+        "name": "Short (First to win a round)",
+        "description": "First player to win a round is declared the winner. Rounds that end in a tie are ignored."
+      },
+      "2": {
+        "name": "Normal (First to 2 Wins)",
+        "description": "First player to win 2 rounds is declared the winner. Rounds that end in a tie are ignored."
+      },
+      "3": {
+        "name": "Extended (First to 3 Wins)",
+        "description": "First player to win 3 rounds is declared the winner. Rounds that end in a tie are ignored."
+      }
+    }
+  },
+  "110": {
+    "name": "Random Fours",
+    "default": 0,
+    "level": "additional",
+    "values": {
+      "0": {
+        "name": "Disabled",
+        "description": "When playing a 4 One-Off effect, the target player chooses which 2 cards to discard from their hand.",
+        "tmdisplay": ""
+      },
+      "1": {
+        "name": "Enabled",
+        "description": "When playing a 4 One-Off effect, the 2 cards to discard are chosen at random.",
+        "tmdisplay": "Random Fours"
+      }
+    }
+  },
+  "111": {
+    "name": "Deck Nines",
+    "default": 0,
+    "level": "additional",
+    "values": {
+      "0": {
+        "name": "Disabled",
+        "description": "When playing a 9 One-Off effect, the target card returns to the owner's hand.",
+        "tmdisplay": ""
+      },
+      "1": {
+        "name": "Enabled",
+        "description": "When playing a 9 One-Off effect, the target card goes on top of the draw pile.",
+        "tmdisplay": "Deck Nines"
+      }
+    }
+  }
+}

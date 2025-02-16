@@ -17,6 +17,13 @@
 	],
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"NevinFoster.bga-extension-pack"
+			]
+		}
 	}
 
 	// Use 'postCreateCommand' to run commands after the container is created.

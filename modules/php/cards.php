@@ -205,7 +205,7 @@ trait CardsTrait
                 'effect_help' => match ($rule_targetPointsSet) {
                     1 => clienttranslate('While a King is active in front of you, the number of points required for you to win is reduced based on the number of active Kings in front of you. With 1/2/3/4 Kings active in front of you, your target points becomes 14/10/7/4.'),
                     2 => clienttranslate('While a King is active in front of you, the number of points required for you to win is reduced based on the number of active Kings in front of you. With 1/2/3/4 Kings active in front of you, your target points becomes 14/10/5/0.'),
-                    3 => clienttranslate('While a King is active in front of you, the number of points required for you to win is reduced based on the number of active Kings in front of you. With 1/2/3 Kings active in front of you, your target points becomes 9/5/0.'),
+                    default => clienttranslate('While a King is active in front of you, the number of points required for you to win is reduced based on the number of active Kings in front of you. With 1/2/3 Kings active in front of you, your target points becomes 9/5/0.'),
                 }
             ]
         ];

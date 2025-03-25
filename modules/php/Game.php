@@ -307,7 +307,7 @@ class Game extends \Table
         $this->globals->set(RULE_TARGET_KING_POINTS, match ($this->globals->get(RULE_TARGET_POINTS_SET)) {
             1 => [21, 14, 10, 7, 4],
             2 => [21, 14, 10, 5, 0],
-            3 => [14, 9, 5, 0, 0],
+            default => [14, 9, 5, 0, 0],
         });
 
         /**

@@ -960,10 +960,12 @@ define([
             setupNotifications: function () {
                 console.log('notifications subscriptions setup');
 
+                dojo.subscribe('endRound', this, 'notify_endRound');
+                this.notifqueue.setSynchronous('endRound', 3000);
+
                 this.bgaSetupPromiseNotifications();
                 this.notifqueue.setIgnoreNotificationCheck('cardDrawn', (notif) => (notif.args.playerId == CuttlePlayers.myId));
                 this.notifqueue.setIgnoreNotificationCheck('revealHand', (notif) => (notif.args.playerId == CuttlePlayers.myId));
-                this.notifqueue.setSynchronous('endRound', 1000);
             },
             handleCommonNotifArgs: function (args) {
                 if (!args) return;
@@ -1086,9 +1088,20 @@ define([
                 let deck = CuttleCards.resetDeck();
                 deck.shuffle();
             },
-            notif_endRound: function (args) { console.log('notif_endRound', args); this.handleCommonNotifArgs(args); },
+            notify_endRound: function (args) {
+                console.log('notif_endRound', args.args, this.notifqueue);
+                //this.notifqueue.setSynchronousDuration(5000);
+                this.handleCommonNotifArgs(args.args);
+            },
             notif_passed: function (args) { console.log('notif_passed', args); this.handleCommonNotifArgs(args); },
             notif_cardPlayed: function (args) { console.log('notif_cardPlayed', args); this.handleCommonNotifArgs(args); },
+            notif_cardPlayed_3: function (args) {
+                console.log('notif_cardPlayed_3', args);
+                if (args.moveToHand) {
+                    CuttleCards.getCardStock('staging').addCards(args.moveToHand);
+                }
+                setTimeout(() => this.handleCommonNotifArgs(args), 1500);
+            },
             notif_cardDrawnSelf: function (args) { console.log('notif_cardDrawnSelf', args); this.handleCommonNotifArgs(args); },
             notif_cardDrawn: function (args) { console.log('notif_cardDrawn', args); this.handleCommonNotifArgs(args); },
             notif_cardPlaying: function (args) {

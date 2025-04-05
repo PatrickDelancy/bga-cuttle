@@ -66,7 +66,7 @@ let CuttleCards = {
                 div.classList.add('mygame-card-back');
             },
             isCardVisible: card => Boolean(card.type),
-            thicknesses: [5, 5],
+            thicknesses: [0, 0],
             cardWidth: 100,
             cardHeight: 150,
         });

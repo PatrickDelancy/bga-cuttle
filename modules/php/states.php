@@ -99,24 +99,27 @@ trait StateTrait
         $score = 0;
         $winningScore = $this->getGameStateValue(K_WINNING_SCORE);
 
+        $playerIds = $this->getPlayerIds();
+        $playerHands = [];
+        foreach ($playerIds as $playerId) {
+            $playerHands[$playerId] = $this->getCards($this->cards->getCardsInLocation('hand', $playerId));
+        }
         if ($roundWinnerId !== null) {
             $score = $this->dbIncScore($roundWinnerId, 1);
 
-            $playerIds = $this->getPlayerIds();
             $playerScores = [];
-            foreach ($playerIds as $playerId) {
-                $playerScores[$playerId] = $this->dbGetScore($playerId);
-            }
             $this->notifyAllPlayers("endRound", clienttranslate('${player_name} wins round ${current_round}'), [
                 "player_name" => $this->getPlayerNameById($roundWinnerId),
                 "current_round" => $currentRound,
 
                 "playerScores" => $playerScores,
+                "playerHands" => $playerHands,
             ]);
         } else {
             $this->incStat(1, "tied_rounds_count");
             $this->notifyAllPlayers("endRound", clienttranslate('Round ${current_round} ends in a tie'), [
                 "current_round" => $currentRound,
+                "playerHands" => $playerHands,
             ]);
         }
 

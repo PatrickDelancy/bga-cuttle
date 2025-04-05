@@ -132,7 +132,7 @@ trait ActionCardEffectsTrait
         $this->cards->moveCard($card['id'], 'discard');
 
         $this->notifyAllPlayers(
-            "cardPlayed",
+            "cardPlayed_3",
             clienttranslate('${player_name} plays ${card_name}, adding ${target_card_name} to their hand'),
             array_merge_recursive($this->dbRecalculatePlayerStatuses(), $notifArgs, [
                 "playerId" => $activePlayerId,

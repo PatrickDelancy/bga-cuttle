@@ -107,7 +107,7 @@ trait StateTrait
         if ($roundWinnerId !== null) {
             $score = $this->dbIncScore($roundWinnerId, 1);
 
-            $playerScores = [];
+            $playerScores = [$roundWinnerId => $score];
             $this->notifyAllPlayers("endRound", clienttranslate('${player_name} wins round ${current_round}'), [
                 "player_name" => $this->getPlayerNameById($roundWinnerId),
                 "current_round" => $currentRound,

@@ -12,22 +12,7 @@
         "name": "Traditional",
         "description": "The earliest documented set of rules for this card game.",
         "tmdisplay": "Traditional"
-      },
-      "3": {
-        "name": "3-Player Battle (OBSOLETE)",
-        "description": "Fast-paced variant for 3 players",
-        "tmdisplay": "3-Player Battle"
       }
-    },
-    "startcondition": {
-      "3": [
-        {
-          "type": "minplayers",
-          "value": 4,
-          "gamestartonly": false,
-          "message": "This game mode is obsolete! Choose Balanced or Traditional with 3 players instead."
-        }
-      ]
     }
   },
   "101": {

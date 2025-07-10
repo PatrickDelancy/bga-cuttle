@@ -64,7 +64,7 @@ define([
                 const cardData = CuttleCards.getCardData();
                 let cardsHelpRows = Object
                     .values(cardData)
-                    .map(v => `<tr><td>${v.name || '-'}</td><td>${v.points || '-'}</td><td>${v.effect_type || '-'}</td><td style="text-align: left;">${v.effect_help || '-'}</td></tr>`)
+                    .map(v => `<tr><td>${_(v.name || '-')}</td><td>${_(v.points || '-')}</td><td>${_(v.effect_type || '-')}</td><td style="text-align: left;">${_(v.effect_help || '-')}</td></tr>`)
                     .join('');
                 let rulesSetLabel = dojo.string.substitute(_('${rulesSetName} Rules'), { rulesSetName: _(CuttleRules.rulesSetName) });
                 let rulesOptionsLabel = (CuttleRules.foursRandom ? `<span title="${_('Discards from 4 One-Off effect are random')}"><i class="fa6-solid fa6-4"></i><i class="fa6-solid fa6-shuffle"></i></span>` : '')

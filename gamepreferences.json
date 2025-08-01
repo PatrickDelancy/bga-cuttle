@@ -16,5 +16,14 @@
       "0": { "name": "Disabled" }
     },
     "default": 1
+  },
+  "102": {
+    "name": "Auto-Pass When No Action Possible",
+    "needReload": true,
+    "values": {
+      "0": { "name": "Disabled" },
+      "1": { "name": "Enabled" }
+    },
+    "default": 0
   }
 }

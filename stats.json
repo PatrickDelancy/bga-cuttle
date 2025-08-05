@@ -1,0 +1,18 @@
+{
+    "table": {
+        "turns_count": { "id": 10, "name": "Number of turns", "type": "int" },
+        "tied_rounds_count": { "id": 20, "name": "Number of tied rounds", "type": "int" }
+    },
+    "player": {
+        "turns_count": { "id": 10, "name": "Number of turns", "type": "int" },
+        "turns_passed": { "id": 11, "name": "Number of turns passed", "type": "int" },
+
+        "drawn_from_deck": { "id": 50, "name": "Cards drawn from deck", "type": "int" },
+        "drawn_from_discard": { "id": 51, "name": "Cards drawn from discard", "type": "int" },
+
+        "played_for_points": { "id": 100, "name": "Cards played for points", "type": "int" },
+        "played_for_scuttle": { "id": 101, "name": "Cards scuttled", "type": "int" },
+        "played_for_effect": { "id": 102, "name": "Effects played", "type": "int" },
+        "played_for_discard": { "id": 103, "name": "Cards discarded", "type": "int" }
+    }
+}

@@ -70,6 +70,8 @@ define('T_UNPLAYABLE_NO_ACTIVE_POINTS', clienttranslate("There are no active poi
 define('T_UNPLAYABLE_NO_ACTIVE_EFFECTS', clienttranslate("There are no active permanent effect cards to affect"));
 define('T_UNPLAYABLE_NO_TARGET_HAND', clienttranslate("The other player does not have any cards in their hand"));
 
+define('PREF_AUTOPASS', 102);
+
 /*
  * Card data
  */

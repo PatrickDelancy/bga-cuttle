@@ -147,7 +147,22 @@ trait StateTrait
         if ($this->globals->get(K_PASS_COUNT, 0) >= 3 || $roundWinnerId !== null) {
             $this->gamestate->nextState("endRound");
         } else {
-            $this->activeNextPlayer();
+            $nextPlayer = $this->getPlayerAfter($playerId);
+
+            if ($this->userPreferences->get($nextPlayer, PREF_AUTOPASS) == 1) {
+                // TODO: If no cards in hand, and no cards in deck, auto-pass
+                $cardCount = $this->cards->countCardInLocation('deck');
+                $cardCount += $this->cards->countCardInLocation('hand', $nextPlayer);
+                if ($cardCount == 0) {
+                    $this->notifyAllPlayers("autoPass", clienttranslate('${player_name} cannot play or draw cards and automatically passes'), [
+                        "playerId" => $nextPlayer,
+                        "player_name" => $this->getPlayerNameById($nextPlayer)
+                    ]);
+
+                    $nextPlayer = $this->getPlayerAfter($nextPlayer);
+                }
+            }
+            $this->gamestate->changeActivePlayer($nextPlayer);
             $this->gamestate->nextState("nextPlayer");
         }
     }

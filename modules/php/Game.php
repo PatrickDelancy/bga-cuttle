@@ -149,7 +149,7 @@ class Game extends \Table
         $result['rules_set_name'] = RULESET_NAMES[$result['rules_set']];
 
         $result['globals'] = $this->globals->getAll();
-        $result['card_data'] = CUTTLE_CARD_DATA;
+        $result['card_data'] = $this->getAllCardData();
         $result['card_names'] = CUTTLE_CARD_NAMES;
 
         $result['winning_score'] = $this->getGameStateValue(K_WINNING_SCORE);
@@ -255,7 +255,7 @@ class Game extends \Table
         switch ($gameRuleSet) {
             case RULESET_3_PLAYER:
                 $this->globals->set(RULE_USE_JOKERS, true);
-                $this->globals->set(RULE_TARGET_KING_POINTS, [14, 9, 5, 0, 0]);
+                $this->globals->set(RULE_TARGET_POINTS_SET, 3);
                 $this->globals->set(RULE_HAND_LIMIT, 7);
                 $this->globals->set(RULE_STARTING_HAND_SIZE_DEALER, 5);
                 $this->globals->set(RULE_STARTING_HAND_SIZE_PLAYER, 5);
@@ -266,10 +266,16 @@ class Game extends \Table
                 $this->globals->set(RULE_9_TARGET_ANY, true);
                 break;
             case RULESET_TRADITIONAL:
-                $this->globals->set(RULE_USE_JOKERS, false);
-                $this->globals->set(RULE_TARGET_KING_POINTS, [21, 14, 10, 7, 4]);
+                if (3 == count($players)) {
+                    $this->globals->set(RULE_USE_JOKERS, true);
+                    $this->globals->set(RULE_TARGET_POINTS_SET, 3);
+                    $this->globals->set(RULE_STARTING_HAND_SIZE_DEALER, 5);
+                } else {
+                    $this->globals->set(RULE_USE_JOKERS, false);
+                    $this->globals->set(RULE_TARGET_POINTS_SET, 1);
+                    $this->globals->set(RULE_STARTING_HAND_SIZE_DEALER, 6);
+                }
                 $this->globals->set(RULE_HAND_LIMIT, 0);
-                $this->globals->set(RULE_STARTING_HAND_SIZE_DEALER, 6);
                 $this->globals->set(RULE_STARTING_HAND_SIZE_PLAYER, 5);
                 $this->globals->set(RULE_DRAW_AND_PLAY_COUNT, 1);
                 $this->globals->set(RULE_RETURNED_CARD_UNPLAYABLE, false);
@@ -279,10 +285,16 @@ class Game extends \Table
                 break;
             case RULESET_BALANCED:
             default:
-                $this->globals->set(RULE_USE_JOKERS, false);
-                $this->globals->set(RULE_TARGET_KING_POINTS, [21, 14, 10, 5, 0]);
+                if (3 == count($players)) {
+                    $this->globals->set(RULE_USE_JOKERS, true);
+                    $this->globals->set(RULE_TARGET_POINTS_SET, 3);
+                    $this->globals->set(RULE_STARTING_HAND_SIZE_DEALER, 5);
+                } else {
+                    $this->globals->set(RULE_USE_JOKERS, false);
+                    $this->globals->set(RULE_TARGET_POINTS_SET, 2);
+                    $this->globals->set(RULE_STARTING_HAND_SIZE_DEALER, 6);
+                }
                 $this->globals->set(RULE_HAND_LIMIT, 8);
-                $this->globals->set(RULE_STARTING_HAND_SIZE_DEALER, 6);
                 $this->globals->set(RULE_STARTING_HAND_SIZE_PLAYER, 5);
                 $this->globals->set(RULE_DRAW_AND_PLAY_COUNT, 2);
                 $this->globals->set(RULE_RETURNED_CARD_UNPLAYABLE, true);
@@ -291,6 +303,12 @@ class Game extends \Table
                 $this->globals->set(RULE_9_TARGET_ANY, true);
                 break;
         }
+
+        $this->globals->set(RULE_TARGET_KING_POINTS, match ($this->globals->get(RULE_TARGET_POINTS_SET)) {
+            1 => [21, 14, 10, 7, 4],
+            2 => [21, 14, 10, 5, 0],
+            3 => [14, 9, 5, 0, 0],
+        });
 
         /**
          * Setup game statistics

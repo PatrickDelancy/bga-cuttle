@@ -6,27 +6,8 @@ trait ArgsTrait
 {
     public function argPlayerChooseAction(): array
     {
-        // $playerId = intval($this->getActivePlayerId());
-
-        // $deckCount = $this->cards->countCardInLocation('deck');
-        // $discardCount = $this->cards->countCardInLocation('discard');
-
-        // $cardsInHand = $this->getCards($this->cards->getCardsInLocation('hand', $playerId));
-        // $cardsPlayability = [];
-        // foreach ($cardsInHand as $cardId => $card) {
-        //     $cardsPlayability[$cardId] = new CardPlayability($card, $this);
-        // }
-
-        // Get some values from the current game situation from the database.
         return [
-            // "deckCount" => $deckCount,
-            // "discardCount" => $discardCount,
-
-            // "_private" => [
-            //     $playerId => [
-            //         "cardsPlayability" => $cardsPlayability
-            //     ]
-            // ]
+            'passCount' => $this->globals->get(K_PASS_COUNT, 0)
         ];
     }
 

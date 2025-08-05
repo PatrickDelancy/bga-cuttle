@@ -4,7 +4,7 @@
   "protocol": "sftp",
   "port": 2022,
   "username": "PatrickDNerd",
-  "privateKeyPath": ".vscode/bga_id",
+  "privateKeyPath": ".vscode/bga_id_rsa",
   "remotePath": "/cuttle/",
   "ignore": [
     ".DS_Store",

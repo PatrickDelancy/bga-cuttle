@@ -361,7 +361,13 @@ define([
                                     }
                                 }
                             } else {
-                                this.addActionButton('actPass-btn', _('Pass'), () => this.bgaPerformAction("actPass"), null, null, 'gray');
+                                const passCount = args?.passCount || 0;
+                                this.addActionButton('actPass-btn',
+                                    passCount >= 2
+                                        ? _('Pass (3/3 - Round will end in a tie)')
+                                        : _('Pass (${count}/3)').replace('${count}', passCount + 1)
+                                    ,
+                                    () => this.bgaPerformAction("actPass"), null, null, 'gray');
                             }
                             break;
                         case 'playerFromStaging':

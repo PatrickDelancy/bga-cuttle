@@ -35,6 +35,7 @@ trait ActionTrait
             "i18n" => ['card_name'],
 
             "drawToHand" => [$drawnCard],
+            "playerReturnedCardIds" => [$activePlayerId => null],
         ]);
 
         if ($this->handVisibleToTable($activePlayerId)) {

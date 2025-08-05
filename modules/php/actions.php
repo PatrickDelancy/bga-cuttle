@@ -248,7 +248,7 @@ trait ActionTrait
                 break;
             case 3:
                 $handLimit = $this->globals->get(RULE_HAND_LIMIT);
-                if ($handLimit > 0 &&  $this->cards->countCardsInLocation('hand', $activePlayerId) >= $handLimit)
+                if ($handLimit > 0 &&  $this->cards->countCardsInLocation('hand', $activePlayerId) > $handLimit)
                     throw new \BgaUserException(self::_('You are already at the hand limit and cannot draw more cards'));
 
                 if ($targetCard == null)
